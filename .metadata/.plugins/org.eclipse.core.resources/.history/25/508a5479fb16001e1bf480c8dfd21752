@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculator</title>
+</head>
+<body>
+	<p>계산기</p>
+	<p>수1: <input type="text" name="num1" id="num1"></p>
+	<p>수2: <input type="text" name="num1" id="num1"></p>
+</body>
+</html>

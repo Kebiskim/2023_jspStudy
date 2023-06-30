@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>HTML을 활용한 서버(서블릿)에게 정보 보내기</h2>
+	<form action="" method="get">
+		<p><label for="name">이름 : </label><input type="text" name="name" id="name"></p>
+		<p><label for="name">나이 : </label><input type="text" name="age" id="age"></p>
+	</form>
+</body>
+</html>

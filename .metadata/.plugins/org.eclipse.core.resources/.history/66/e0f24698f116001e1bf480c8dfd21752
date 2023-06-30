@@ -1,0 +1,31 @@
+package com.ict.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Ex05")
+public class Ex05 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 서블릿의 역할은 client에서 요청한 것을 받아서
+		// 요청에 맞는 일처리를 하는 곳으로 전달하고 (자바 = 순수 자바(POJO, Plain Old Java Object))
+		// 해당 일처리의 결과를 받아서 client에게 응답하는 역할을 한다.
+		// 이러한 결과를 받아서 client에게 전달하는 역할이 MVC 패턴에서 C에 해당된다.
+		// M : Model(자바), C : Controller(서블릿), V : View(HTML 
+		
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+	}
+
+}
