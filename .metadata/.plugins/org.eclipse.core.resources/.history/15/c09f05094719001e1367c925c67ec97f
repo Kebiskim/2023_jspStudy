@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>HTML을 활용한 서버(서블릿)에게 정보 보내기</h2>
+	<form action="/01_servlet/Ex10_1" method="post">
+	<fieldset>
+		<legend></legend>
+	</fieldset>
+	</form>
+</body>
+</html>

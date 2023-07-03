@@ -1,0 +1,13 @@
+package com.ict.model;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class GetTodayCommand implements Command{
+	@Override
+	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		// 여기서 일처라 한다!
+		// 아래에 갈 곳을 정해 준다 (HTML은 안 되니까 JSP로 지정!!)
+		return "view/result01.jsp";
+	}
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Grade</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	function submit_scores(f) {
+		// form 태그의 요소 길이만큼
+		for (var i = 0; i < f.elements.length; i++) {
+			if(f.elements[i].value == ""){
+				// 아래 코드가 바로 유효성 검사!!
+				alert(f.elements[i].name+"을 입력하세요.");
+				f.elements[i].focus();
+				return;
+			}
+		}
+		
+	/* 	var name = f.name.value;
+		var kor = f.kor.value;
+		var eng = f.eng.value;
+		var math = f.math.value;
+		if (name == ''){
+			alert("이름을 입력하세요.");
+			f.name.focus;
+			return;
+		}
+		if (kor == ''){
+			alert("국어 성적을 입력하세요.");
+			f.kor.focus;
+			return;
+		}
+		if (eng == ''){
+			alert("영어 성적을 입력하세요.");
+			f.eng.focus;
+			return;
+		}
+		if (math == ''){
+			alert("수학 성적을 입력하세요.");
+			f.math.focus;
+			return;
+		} */
+		
+		f.action = "/01_servlet/Ex08";
+		f.submit();
+	}
+</script>
+
+
+
+<script type="text/javascript">
+	function submit_scores2(f) {
+		for (var i = 0; i < f.elements.length; i++) {
+			if(f.elements[i].value == ""){
+				// 아래 코드가 바로 유효성 검사!!
+				alert(f.elements[i].name+"을 입력하세요.");
+				f.elements[i].focus();
+				return;
+			}
+		}
+	
+		f.action = "/01_servlet/Ex08";
+		f.submit();
+	}
+</script>
+
+
+
+</head>
+<body>
+	<form action = "/01_servlet/Ex08" method="post">
+        <fieldset>
+            <legend> 성적 입력 </legend>
+            <p>이름 : <input type="text" name="name" required></p>
+            <p>국어 : <input type="number" name="kor" max="100" required></p>
+            <p>영어 : <input type="number" name="eng" max="100" required></p>
+            <p>수학 : <input type="number" name="math" max="100" required></p>
+            <input type=submit value="결과보기">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+    
+    <!-- JS 방식! -->
+	<form method="post">
+        <fieldset>
+            <legend> 성적 입력 </legend>
+            <p>이름 : <input type="text" name="name"></p>
+            <p>국어 : <input type="number" name="kor"></p>
+            <p>영어 : <input type="number" name="eng"></p>
+            <p>수학 : <input type="number" name="math"></p>
+            <input type="button" value="결과보기" onclick="submit_scores(this.form)">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+
+    <!-- JS를 함수는 가지만 required가 실행된다. -->
+	<form method="post" onsubmit="submit_scores2(this.form)">
+        <fieldset>
+            <legend> 성적 입력 </legend>
+            <p>이름 : <input type="text" name="name"></p>
+            <p>국어 : <input type="number" name="kor"></p>
+            <p>영어 : <input type="number" name="eng"></p>
+            <p>수학 : <input type="number" name="math"></p>
+            <input type="button" value="결과보기" onclick="submit_scores(this.form)">
+            <input type="reset" value="취소">
+        </fieldset>
+    </form>
+
+
+</body>
+</html>

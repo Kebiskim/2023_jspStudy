@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>HTML을 활용한 서버(서블릿)에게 정보 보내기</h2>
+	<form action="/01_servlet/Ex11_1" method="post" autocomplete="off">
+	<fieldset>
+		<legend>로그인</legend>
+		<!-- for에는 id를 집어넣음. 그래야 연결이 된다!! -->
+		<p><label for="name">이름 : </label>
+			<input type="text" name="name" id="name" required></p>
+		<p><label for="age">나이 : </label>
+			<input type="number" name="age" id="age" required></p>
+		<p><label for="age">주소 : </label>
+			<input type="text" name="address" id="address" required></p>
+			<input type="submit" value="보내기">
+			<input type="reset"  value="취소">
+	</fieldset>
+	</form>
+</body>
+</html>

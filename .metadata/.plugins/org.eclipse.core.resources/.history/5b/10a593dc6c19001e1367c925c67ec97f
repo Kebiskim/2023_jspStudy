@@ -1,0 +1,22 @@
+<!-- Servlet 첨 배울 때 한글처리한다고 배운 것들 (text/html;, 등등)
+html 안에서 java를 보여주는 것 => JSP. 한글처리가 자동으로 되어 있음!! -->
+<!-- JSP는 view 폴더 안에 만드는 것임!! -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>result01 페이지</h1>
+	<h2>
+		${year}년 ${month}월 ${day}일
+	</h2>
+	<hr>
+	<h2>
+		
+	</h2>
+</body>
+</html>
