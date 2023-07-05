@@ -63,7 +63,7 @@
 <%-- <% response.sendRedirect("Ex05_Result.jsp?name=둘리&age=24&gender=남&hobby=운동&hobby=게임.jsp"); %> --%>
 
 <%-- 포워딩 --%>
-<% response.sendRedirect("Ex05_Result.jsp?name=둘리&age=24&gender=남&hobby=운동&hobby=게임").forward(request, response);%>
+<%-- <% response.sendRedirect("Ex05_Result.jsp?name=둘리&age=24&gender=남&hobby=운동&hobby=게임").forward(request, response);%> --%>
 
 </body>
 </html>
