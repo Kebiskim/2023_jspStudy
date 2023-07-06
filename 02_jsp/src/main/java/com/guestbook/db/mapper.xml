@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
+<mapper namespace="guestbook">
+	<!-- mapper를 여러개 쓸 때, namespcae로 mapper를 구분하게 됨! -->
+	<!-- (전체 목록 가져오기는 파라미터 타입이 없음) -->
+	<select id="list" resultType="com.guestbook.db.VO">
+	<!-- 최신글이 위로 올라오면 내림차순. 아니면 오름차순 -->
+	<!-- mapper에서는 ; 쓰면 안된다!! -->
+		select * from GUESTBOOK order by idx desc
+	</select>
+	
+	<!-- 방명록 쓰기 -->
+	<insert id="insert" parameterType="com.guestbook.db.VO">
+		insert into GUESTBOOK(IDX, NAME, SUBJECT, CONTENT, EMAIL, PWD, REGDATE)
+		values(guestbook_seq.nextval, #{name}, #{subject}, #{content}, #{email}, #{pwd}, sysdate)
+	</insert>
+	
+	<!-- primarykey 가지고 하나의 레코드 가져오기(상세보기) -->
+	<select id="onelist" parameterType="String" resultType="com.guestbook.db.VO">
+		select * from guestbook where idx = #{idx}
+	</select>
+</mapper>
