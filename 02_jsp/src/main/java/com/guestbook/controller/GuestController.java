@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.guestbook.model.Command;
+import com.guestbook.model.DeleteCommand;
+import com.guestbook.model.DeleteOkCommand;
 import com.guestbook.model.ListCommand;
 import com.guestbook.model.OneListCommand;
+import com.guestbook.model.UpdateCommand;
+import com.guestbook.model.UpdateOkCommand;
 import com.guestbook.model.WriteCommand;
 import com.guestbook.model.WriteOkCommand;
 
@@ -41,6 +45,14 @@ public class GuestController extends HttpServlet {
 			comm = new WriteOkCommand();
 		}else if(cmd.equals("onelist")) {
 			comm = new OneListCommand();
+		}else if(cmd.equals("update")) {
+			comm = new UpdateCommand();
+		}else if(cmd.equals("update_ok")) {
+			comm = new UpdateOkCommand();
+		}else if(cmd.equals("delete")) {
+			comm = new DeleteCommand();
+		}else if(cmd.equals("delete_ok"	)) {
+			comm = new DeleteOkCommand();
 		}
 		// ListCommand가 자신을 호출한 Controller로 돌아옴
 		String path = comm.exec(request, response);

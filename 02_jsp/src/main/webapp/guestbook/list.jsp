@@ -29,7 +29,7 @@
 	<div>
 		<h2>방명록 리스트</h2>
 		<hr>
-		<p>[<a href="/jsp/GuestController?cmd=write">방명록 쓰기</a>]</p>
+		<p>[<a href="/02_jsp/GuestController?cmd=list">방명록 쓰기</a>]</p>
 		<table>
 			<thead>
 				<tr style="background-color : #99ccff">

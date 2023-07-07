@@ -37,4 +37,19 @@ public class DAO {
 		VO vo = getSession().selectOne("guestbook.onelist", idx);
 		return vo;
 	}
+	
+	// 업데이트
+	public static int getUpdate(VO vo) {
+		// ???
+		int result = getSession().update("guestbook.update", vo);
+		// insert, update, delete는 반드시 commit 붙여줘야 함!!
+		ss.commit();
+		return result;
+	}
+	
+	public static int getDelete(String idx) {
+		int result = getSession().delete("guestbook.delete", idx);
+		ss.commit();
+		return result;
+	}
 }

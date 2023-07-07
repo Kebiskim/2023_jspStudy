@@ -22,4 +22,14 @@
 	<select id="onelist" parameterType="String" resultType="com.guestbook.db.VO">
 		select * from guestbook where idx = #{idx}
 	</select>
+	
+	<update id="update" parameterType="com.guestbook.db.VO">
+	<!-- null for parameter #1 => 첫번째 입력하는 파라미터가 잘못되었다. -->
+		update GUESTBOOK set NAME=#{name}, SUBJECT=#{subject},
+		EMAIL=#{email}, CONTENT=#{content} where IDX=#{idx}	
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from GUESTBOOK where idx = #{idx}
+	</delete>
 </mapper>

@@ -22,7 +22,7 @@
 	<div>
 		<h2>방명록 : 작성화면</h2>
 		<hr />
-		<p>[<a href="/03_guestbook/MyController?cmd=list">목록으로 이동</a>]</p>
+		<p>[<a href="/02_jsp/GuestController?cmd=list">목록으로 이동</a>]</p>
 		<form method="post">
 			<table>
 				<tr align="center">

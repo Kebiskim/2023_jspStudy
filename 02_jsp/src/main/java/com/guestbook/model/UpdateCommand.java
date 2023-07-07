@@ -6,16 +6,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.guestbook.db.DAO;
 import com.guestbook.db.VO;
 
-public class OneListCommand implements Command {
+public class UpdateCommand implements Command {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 일처리 = (DB)
+		// idx를 이용해서 DB 정보를 가져오자
 		String idx = request.getParameter("idx");
+		// onelist할 때 사용한 메서드
 		VO vo = DAO.getOneList(idx);
-		// 저장
-		request.setAttribute("vo", vo);
-		// command를 호출한 controller로 간다.
 		
-		return "guestbook/onelist.jsp";
+		request.setAttribute("vo", vo);
+		return "guestbook/update.jsp";
 	}
+
 }
