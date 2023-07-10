@@ -1,4 +1,4 @@
-package com.guestbook.model;
+package com.guestbook2.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

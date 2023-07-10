@@ -16,7 +16,7 @@
 	// 웹 브라우저 문서 타입을 다운로드할 수 있도록 변경
 	response.setContentType("application/x-msdownload");
 	
-	// http 헤더 정보도 첨부파이이 존재하는 것으로 변경
+	// http 헤더 정보도 첨부파일이 존재하는 것으로 변경
 	response.setHeader("Content-Disposition", 
 			"attachment; filename="+URLEncoder.encode(f_name, "utf-8"));
 	// 이 위까지가 브라우저 관련된 설정. ///////////////////////////////////////
