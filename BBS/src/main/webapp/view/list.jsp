@@ -78,6 +78,10 @@ table tfoot ol.paging li a:hover {
 	function write_go(){
 		location.href = "/MyController?cmd=write";
 	}
+	function onelist_go(){
+		location.href = "/MyController?cmd=onelist";
+	}
+	
 </script>
 </head>
 <body>
@@ -105,10 +109,12 @@ table tfoot ol.paging li a:hover {
 						<c:forEach var="k" items="${list}" varStatus="vs">
 							<tr>
 								<td>${vs.count}</td>
-								<td>${vs.subject}</td>
-								<td>${vs.writer}</td>
-								<td>${vs.write_date.substring(0,10)}</td>
-								<td>${vs.hit}</td>
+								<!-- vs.subject 라서 오류? k.subject로 바꿔줘야 함!!! -->
+								<td><a href="/MyController?cmd=onelist?b_idx=${k.b_idx}">${k.subject}</a></td>
+<%-- 								<td>${vs.subject}</td> --%>
+								<td>${k.writer}</td>
+								<td>${k.write_date.substring(0,10)}</td>
+								<td>${k.hit}</td>
 							</tr>
 						</c:forEach>
 					</c:otherwise>

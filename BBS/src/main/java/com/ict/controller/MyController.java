@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ict.model.Command;
+import com.ict.model.DeleteCommand;
+import com.ict.model.DeleteOkCommand;
 import com.ict.model.ListCommand;
+import com.ict.model.OneListCommand;
+import com.ict.model.UpdateCommand;
+import com.ict.model.UpdateOkCommand;
 import com.ict.model.WriteCommand;
 import com.ict.model.WriteOkCommand;
 
@@ -37,6 +42,16 @@ public class MyController extends HttpServlet {
 			comm = new WriteCommand();
 		}else if(cmd.equals("write_ok")) {
 			comm = new WriteOkCommand();
+		}else if(cmd.equals("onelist")) {
+			comm = new OneListCommand();
+		}else if(cmd.equals("update")) {
+			comm = new UpdateCommand();
+		}else if(cmd.equals("delete")) {
+			comm = new DeleteCommand();
+		}else if(cmd.equals("update_ok")) {
+			comm = new UpdateOkCommand();
+		}else if(cmd.equals("delete_ok")) {
+			comm = new DeleteOkCommand();
 		}
 		String path = comm.exec(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

@@ -8,4 +8,33 @@
 	<select id="list" resultType="com.ict.db.BVO">
 		select * from bbs_t order by b_idx desc
 	</select>
+	
+	<!-- 원글 삽입 -->
+	<insert id="insert" parameterType="com.ict.db.BVO">
+		insert into bbs_t(b_idx, subject, writer, content, f_name, pwd, write_date, hit)
+		values(bbs_t_seq.nextval, #{subject}, #{writer}, #{content}, #{f_name}, 
+		#{pwd}, sysdate, 0)
+	</insert>
+	
+	<!-- 조회수 업데이트 -->
+	<update id="hit" parameterType="String">
+		update bbs_t set hit = hit + 1 where b_idx = #{b_idx}
+	</update>
+	
+	<!-- 원글 상세보기 -->
+	<select id="onelist" parameterType="String" resultType="com.ict.db.BVO">
+		select * from bbs_t where b_idx = #{b_idx}
+	</select>
+	
+	<!-- 원글 수정하기 -->
+	<!-- ★ ins, upd, del은 resultType이 없음!! -->
+	<update id="bbs.update" parameterType="com.ict.db.BVO">
+		update bbs_t set subject=#{subject}, writer=#{writer}, content=#{content},
+		f_name=#{f_name} where b_idx = #{b_idx}
+	</update>
+	
+	<!-- 원글 삭제하기 -->
+	<delete id="delete" parameterType="String">
+		delete from bbs_t where b_idx = #{b_idx}
+	</delete>
 </mapper>

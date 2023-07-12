@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,6 @@
 	    border:1px solid black;
 	    border-collapse:collapse;
 	    font-size:14px;
-	    
 	}
 	
 	#bbs table caption {
@@ -43,40 +43,19 @@
 	.odd {background:silver}
 </style>
 <script type="text/javascript">
-	function sendData(f){
-		// subject를 입력하세요, content를 입력하세요. 빈칸에 맞춰서 다돌아가면서 alert창 띄워줌
-		// 유효성 검사 (1)
-/* 		for (var i = 0; i < f.elements.length; i++) {
-			if(f.elements[i].value == ""){
-				if (i == 3) continue;
-				alert(f.elements[i].name + "을(를) 입력하세요!");
-				f.elements[i].focus();
-				return;
-			}
-		} */
-		
-		// 다른 방법
-		if(f.subject.value.trim().length <= 0){
-			alert("제목을 입력하세요.");
-			f.subject.focus();
-		}
-		if(f.writer.value.trim().length <= 0){
-			alert("작성자를 입력하세요.");
-			f.writer.focus();
-		}
-		if(f.content.value.trim().length <= 0){
-			alert("내용을 입력하세요.");
-			f.content.focus();
-		}
-		if(f.pwd.value.trim().length <= 0){
-			alert("비밀번호를 입력하세요.");
+	/* 수정할 때는 별도로 유효성검사 안 함(값이 다 들어있으니) */
+	function update_ok(f){
+		var pwd = "${bvo.pwd}";
+		if(f.pwd.value == pwd){
+			f.action = "/MyController?cmd=update_ok";
+			f.submit(); 
+		}else{
+			alert("비밀번호 틀림");
+			f.pwd.value="";
 			f.pwd.focus();
+			return;
 		}
-		
-		f.action="/MyController?cmd=write_ok";
-		f.submit();		
-		}
-	
+	}
 	function list_go(f){
 		f.action="/MyController?cmd=list";
 		f.submit();
@@ -85,28 +64,37 @@
 </head>
 <body>
 	<div id="bbs">
-	<!-- encType은 첨부파일 메뉴가 있으면 꼭 넣어줘야 하는 부분!! -->
-	<!-- post, multipart 하면 hidden 못씀!! -->
+	<!-- multipart로 바뀌면 hidden 안된다!! -->
 	<form method="post" encType="multipart/form-data">
-		<table summary="게시판 글쓰기">
-			<caption>게시판 글쓰기</caption>
+		<table summary="게시판 수정">
+			<caption>게시판 수정</caption>
 			<tbody>
 				<tr>
 					<th>제목:</th>
-					<td><input type="text" name="subject" size="45"/></td>
+					<td><input type="text" name="subject" size="45" value="${bvo.subject}"></td>
 				</tr>
 				<tr>
 					<th>이름:</th>
-					<td><input type="text" name="writer" size="12"/></td>
+					<td><input type="text" name="writer" size="12" value="${bvo.writer}"></td>
 				</tr>
 				<tr>
 					<th>내용:</th>
 					<td><textarea name="content" cols="50" 
-							rows="8"></textarea></td>
+							rows="8">${bvo.content}</textarea></td>
 				</tr>
 				<tr>
-					<!-- 파일명 f_name으로 DB에 되어있음. 그래서 맞춰주기 -->
 					<th>첨부파일:</th>
+					<c:choose>
+						<c:when test="${empty bvo.f_name}">
+							<td><input type="file" name="f_name"><b>이전 파일 없음</b></td>
+								<input type="hidden" name="old_f_name" value="">
+						</c:when>
+						<c:otherwise>
+							<td><input type="file" name="f_name"><b>${bvo.f_name}</b></td>
+								<input type="hidden" name="old_f_name" value="${bvo.f_name}">
+						</c:otherwise>
+					</c:choose>
+					
 					<td><input type="file" name="f_name"/></td>
 				</tr>
 				<tr>
@@ -115,11 +103,10 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="button" value="보내기" onclick="sendData(this.form)"/>
+						<!-- hidden 사용 가능한지 체크해보는 것 -->
+						<input type="hidden" name="b_idx" value="${bvo.b_idx}">
+						<input type="button" value="수정" onclick="update_ok(this.form)"/>
 						<input type="reset" value="다시"/>
-						
-						<!-- <input type="button" value="목록" onclick="list_go()"/> -->
-						<!-- 정보 안가져가면 this.form 안써도 됨!! -->
 						<input type="button" value="목록" onclick="list_go(this.form)"/>
 					</td>
 				</tr>
@@ -129,4 +116,3 @@
 	</div>
 </body>
 </html>
-
