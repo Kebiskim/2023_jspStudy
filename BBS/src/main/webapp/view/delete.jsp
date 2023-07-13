@@ -49,7 +49,6 @@
 			if(chk){
 				f.action="/MyController?cmd=delete_ok";
 				f.submit();
-			}
 			}else{
 				history.go(-1);
 			}
@@ -59,9 +58,10 @@
 			f.pwd.focus();
 			return;
 		}
-		
+		<%-- 여기 두번 쓴듯??
 		f.action="/MyController?cmd=delete_ok";
 		f.submit();
+		--%> 
 	}
 	
 	function list_go(f){
@@ -84,7 +84,16 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="hidden" name="b_idx" value="${b_idx}">
+						<%-- bvo.b_idx 해야 오류 안남 --%>
+						<%-- org.apache.ibatis.exceptions.PersistenceException: 
+						### Error updating database.  Cause: org.apache.ibatis.type.TypeException: 
+						Could not set parameters for mapping: ParameterMapping{property='b_idx', mode=IN, 
+						javaType=class java.lang.String, jdbcType=null, numericScale=null, resultMapId='null', 
+						jdbcTypeName='null', expression='null'}. Cause: org.apache.ibatis.type.TypeException: 
+						Error setting null for parameter #1 with JdbcType OTHER . Try setting a different 
+						JdbcType for this parameter or a different jdbcTypeForNull 
+						configuration property. Cause: java.sql.SQLException: ORA-17004: 열 유형이 부적합합니다.: 1111 --%>
+						<input type="hidden" name="b_idx" value="${bvo.b_idx}">
 						<input type="button" value="삭제" onclick="delete_ok(this.form)"/>
 						<input type="button" value="목록" onclick="list_go(this.form)"/>
 					</td>

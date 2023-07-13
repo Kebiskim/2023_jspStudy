@@ -55,6 +55,9 @@
 			}
 		} */
 		
+		// 하나라도 빈칸이 있으면 전체 입력하라는 메시지 뜨고.
+		// 그 다음에 한칸만 빈칸이라면 거기 입력하라는 메시지 띄우기.
+		
 		// 다른 방법
 		if(f.subject.value.trim().length <= 0){
 			alert("제목을 입력하세요.");
@@ -73,9 +76,11 @@
 			f.pwd.focus();
 		}
 		
+		else{
 		f.action="/MyController?cmd=write_ok";
-		f.submit();		
+		f.submit();					
 		}
+	}
 	
 	function list_go(f){
 		f.action="/MyController?cmd=list";

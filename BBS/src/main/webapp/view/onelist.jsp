@@ -51,18 +51,45 @@
 	}
 </style>
 <script type="text/javascript">
+
 	function list_go(f){
 		f.action="/MyController?cmd=list";
 		f.submit();
 	}
+	
 	function update_go(f){
 		f.action="/MyController?cmd=update";
 		f.submit();
 	}
+	
 	function delete_go(f){
 		f.action="/MyController?cmd=delete";
 		f.submit();
 	}
+	
+	function comment_go(f){
+		// 유효성 검사
+		if (f.writer.value.trim().length <= 0){
+			alert("이름을 입력해 주세요");
+			f.writer.focus();
+			return;
+		}
+		if (f.content.value.trim().length <= 0){
+			alert("내용을 입력해 주세요");
+			f.content.focus();
+			return;
+		}
+		else{
+		f.action="/MyController?cmd=c_write";
+		f.submit();			
+		}
+	}
+	
+	function comment_del(f){
+		f.action="/MyController?cmd=c_delete";
+		f.submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -85,14 +112,15 @@
 					<td>${bvo.content}</td>
 				</tr>
 				<tr>
-					<!-- 첨부파일은 있을 수도, 없을 수도 => if문으로 나눈다!! -->
+					 
+					<%-- 첨부파일은 있을 수도, 없을 수도 => if문으로 나눈다!! --%>
 					<th>첨부파일:</th>
 					<c:choose>
 						<c:when test="${empty bvo.f_name}">
 							<td><b>첨부 파일 없음</b></td>
 						</c:when>
 						<c:otherwise>
-							<!-- MyController 같이 못씀! 별도로 해주자 -->
+							<%-- MyController 같이 못씀! 별도로 해주자 --%>
 							<td><a href="/DownController?path=upload&f_name=${bvo.f_name}" target="_blank"><img src="upload/${bvo.f_name}" style="80px"></a></td>
 						</c:otherwise>
 					</c:choose>
@@ -113,13 +141,14 @@
 		</table>
 	</form>
 	</div>
+	
 	<%-- 댓글 처리 --%>
 	<div style="padding:50px; width: 580px; margin: auto;">
 		<form method="post">
 			<fieldset>
-				<p>이름 : <input type="text" name=""></p>
+				<p>이름 : <input type="text" name="writer"></p>
 				<p>내용 : <br>
-					<textarea rows="4" cols="40" name=""></textarea>
+					<textarea rows="4" cols="40" name="content"></textarea>
 				</p>
 				<input type="button" value="댓글저장" onclick="comment_go(this.form)">
 				<input type="hidden" name="b_idx" value="${bvo.b_idx}">
@@ -127,19 +156,23 @@
 		</form>
 	</div>
 	<br><br><br>
+	
+	<%-- 댓글 출력 --%>
 	<div style="display: table;">
-		<!-- 상세보기 가면 나에 딸린 댓글도 나와야 함. 원글에 해당하는 댓글들을 끌고 와야한다 -->
+		<%-- 상세보기 가면 나에 딸린 댓글도 나와야 함. 원글에 해당하는 댓글들을 끌고 와야한다 --%>
 		<c:forEach var="k" items="${c_list}">	
 			<!-- 서버에 들어가는 것들은 기본적으로 form 태그임. (submit 등) -->
-			<div style="border: 1px solid #cc00cc; width: 400px; margin: 20px; padding: 20px;">
+			<div style="border: 1px solid #cc00cc; width: 400px; margin: auto; padding: 20px;">
 				<form method="post">
 					<p>이름 : ${k.writer}</p>
 					<p>내용 : ${k.content}</p>
 					<p>날짜 : ${k.write_date.substring(0,10)}</p>
 					<%-- 로그인 성공해야만 삭제버튼이 보이도록 처리해야 한다. --%>
 					<input type="button" value="댓글삭제" onclick="comment_del(this.form)">
+					<input type="hidden" value=${k.c_idx} name="c_idx">
+					<input type="hidden" value=${k.b_idx} name="b_idx">
 				</form>
+			</div>
 		</c:forEach>
-	</div>
 </body>
 </html>

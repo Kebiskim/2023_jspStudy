@@ -46,6 +46,7 @@
 	/* 수정할 때는 별도로 유효성검사 안 함(값이 다 들어있으니) */
 	function update_ok(f){
 		var pwd = "${bvo.pwd}";
+		// 비밀번호 일치여부 확인
 		if(f.pwd.value == pwd){
 			f.action = "/MyController?cmd=update_ok";
 			f.submit(); 
@@ -95,7 +96,8 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<td><input type="file" name="f_name"/></td>
+					<!-- 이부분 때문인가??? -->
+					<!-- <td><input type="file" name="f_name"/></td> -->
 				</tr>
 				<tr>
 					<th>비밀번호:</th>

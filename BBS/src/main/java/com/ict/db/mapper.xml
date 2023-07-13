@@ -5,10 +5,27 @@
 <!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
 <mapper namespace="bbs">
 	<!-- 원글 리스트 -->
-	<select id="list" resultType="com.ict.db.BVO">
+<!-- 	<select id="list" resultType="com.ict.db.BVO">
 		select * from bbs_t order by b_idx desc
 	</select>
-	
+ -->
+ 
+ 	<!-- 페이지 처리 1 : 전체 게시물의 수 구하기 -->
+ 	<select id="count" resultType="int">
+ 		select count(*) from bbs_t
+ 	</select>
+ 	
+ 	<!-- 시작번호와 끝번호를 가지고 리스트 구하기 -->
+ 	<!-- rownum이란 개념은 oracle에만 있으므로, mysql과 마리아DB랑 여기서 나뉘는 부분이 있음 -->
+ 	<!-- B_IDX는 사용 못함 (검색 삭제 수정할 때는 가능), 순서를 반대로 바꿔야 최신글이 1번으로 나온다. -->
+ 	<select id="list" parameterType="Map" resultType="com.ict.db.BVO">
+	 	select * from (
+		 		select rownum r_num, a.* from (
+		 			select * from bbs_t order by b_idx desc
+		 		) a
+	 		) where r_num between #{begin} and #{end}
+ 	</select> 	
+ 		
 	<!-- 원글 삽입 -->
 	<insert id="insert" parameterType="com.ict.db.BVO">
 		insert into bbs_t(b_idx, subject, writer, content, f_name, pwd, write_date, hit)
@@ -28,7 +45,7 @@
 	
 	<!-- 원글 수정하기 -->
 	<!-- ★ ins, upd, del은 resultType이 없음!! -->
-	<update id="bbs.update" parameterType="com.ict.db.BVO">
+	<update id="update" parameterType="com.ict.db.BVO">
 		update bbs_t set subject=#{subject}, writer=#{writer}, content=#{content},
 		f_name=#{f_name} where b_idx = #{b_idx}
 	</update>
@@ -37,4 +54,26 @@
 	<delete id="delete" parameterType="String">
 		delete from bbs_t where b_idx = #{b_idx}
 	</delete>
+	
+	<!-- 댓글 리스트 -->
+	<select id="clist" parameterType="String" resultType="com.ict.db.CVO">
+		select * from comment_t where b_idx = #{b_idx}
+	</select>
+	
+	<!-- 댓글 삽입 -->
+	<insert id="cinsert" parameterType="com.ict.db.CVO">
+		insert into comment_t(c_idx, writer, content, b_idx)
+		values(comment_t_seq.nextval, #{writer}, #{content}, #{b_idx})
+	</insert>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="cdelete" parameterType="String">
+		delete from comment_t where c_idx = #{c_idx}
+	</delete>
+	
+	<!-- 원글에 속한 댓글 모두 삭제 -->
+	<delete id="c_all_delete" parameterType="String">
+		delete from comment_t where b_idx = #{b_idx}
+	</delete>
+	
 </mapper>

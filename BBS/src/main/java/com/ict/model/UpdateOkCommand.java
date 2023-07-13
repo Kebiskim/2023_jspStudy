@@ -20,6 +20,7 @@ public class UpdateOkCommand implements Command {
 			// mr 했으니까 아래 코드가 작동하는지 테스트해 보자!!
 			bvo.setB_idx(mr.getParameter("b_idx"));
 			bvo.setSubject(mr.getParameter("subject"));
+			bvo.setWriter(mr.getParameter("writer"));
 			bvo.setContent(mr.getParameter("content"));
 			
 			String old_f_name = mr.getParameter("old_f_name");

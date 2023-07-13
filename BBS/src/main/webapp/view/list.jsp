@@ -78,10 +78,7 @@ table tfoot ol.paging li a:hover {
 	function write_go(){
 		location.href = "/MyController?cmd=write";
 	}
-	function onelist_go(){
-		location.href = "/MyController?cmd=onelist";
-	}
-	
+
 </script>
 </head>
 <body>
@@ -110,7 +107,10 @@ table tfoot ol.paging li a:hover {
 							<tr>
 								<td>${vs.count}</td>
 								<!-- vs.subject 라서 오류? k.subject로 바꿔줘야 함!!! -->
-								<td><a href="/MyController?cmd=onelist?b_idx=${k.b_idx}">${k.subject}</a></td>
+								<!-- onelist 뒤에 & 가 아니라 ?가 들어가있음..? -->
+								<!-- 메시지 Cannot invoke "com.ict.model.Command.exec(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)" because "comm" is null
+								 -->
+								<td><a href="/MyController?cmd=onelist&b_idx=${k.b_idx}">${k.subject}</a></td>
 <%-- 								<td>${vs.subject}</td> --%>
 								<td>${k.writer}</td>
 								<td>${k.write_date.substring(0,10)}</td>
