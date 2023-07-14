@@ -14,6 +14,7 @@ public class Comment_Write implements Command {
 		String b_idx = request.getParameter("b_idx");
 		String writer = request.getParameter("writer");
 		String content = request.getParameter("content");
+		String cPage = request.getParameter("cPage");
 		
 		// VO 생성해서 거기다 담는다.
 		CVO cvo = new CVO();
@@ -23,6 +24,6 @@ public class Comment_Write implements Command {
 	
 		int result = DAO.getC_Insert(cvo);
 		// 코멘트 달고 다시 onelist로 넘아가자. 그떄 b_idx 넘겨주자!
-		return "MyController?cmd=onelist&b_idx="+b_idx;
+		return "MyController?cmd=onelist&b_idx="+b_idx+"&cPage="+cPage;
 	}
 }

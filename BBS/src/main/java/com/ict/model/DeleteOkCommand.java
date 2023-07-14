@@ -9,10 +9,13 @@ public class DeleteOkCommand implements Command{
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		String b_idx = request.getParameter("b_idx");
-		
+		String cPage = request.getParameter("cPage");
 		// 방법1. 원글에 속한 댓글 삭제
 		// 여기서 오류 나네!
-//		int res = DAO.getCommentDeleteAll(b_idx);
+		System.out.println("테스트중");
+		System.out.println("deleteokcomm b_idx : " + b_idx);
+
+		int res = DAO.getCommentDeleteAll(b_idx);
 		
 		// 방법2. error 페이지로 이동 (퀴즈)
 		
@@ -24,6 +27,8 @@ public class DeleteOkCommand implements Command{
 		System.out.println("b_idx : " + b_idx);
 		// 원글 삭제
 		int result = DAO.getDelete(b_idx);
-		return "MyController?cmd=list";
+		System.out.println("여긴가");
+		System.out.println(cPage);
+		return "MyController?cmd=list&cPage="+cPage;
 	}
 }

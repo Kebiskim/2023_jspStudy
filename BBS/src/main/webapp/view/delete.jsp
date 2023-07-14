@@ -47,7 +47,8 @@
 		if(f.pwd.value == pwd){
 			var chk = confirm("정말 삭제할까요?");
 			if(chk){
-				f.action="/MyController?cmd=delete_ok";
+				// 맞음! 페이지 넘겨주기.
+				f.action="/MyController?cmd=delete_ok&b_idx=${bvo.b_idx}&cPage=${cPage}";
 				f.submit();
 			}else{
 				history.go(-1);
@@ -74,6 +75,7 @@
 	<div id="bbs">
 	<!-- encType은 첨부파일 메뉴가 있으면 꼭 넣어줘야 하는 부분!! -->
 	<!-- post, multipart 하면 hidden 못씀!! -->
+	<!-- form 에 감싸져 있어서 밑에 cPage는 날아가고 있음!! (multipart라 하더라도)??? -->
 	<form method="post" encType="multipart/form-data">
 		<table summary="게시판 삭제하기">
 			<caption>게시판 삭제</caption>
@@ -94,6 +96,7 @@
 						JdbcType for this parameter or a different jdbcTypeForNull 
 						configuration property. Cause: java.sql.SQLException: ORA-17004: 열 유형이 부적합합니다.: 1111 --%>
 						<input type="hidden" name="b_idx" value="${bvo.b_idx}">
+						<input type="hidden" name="cPage" value="${cPage}">
 						<input type="button" value="삭제" onclick="delete_ok(this.form)"/>
 						<input type="button" value="목록" onclick="list_go(this.form)"/>
 					</td>

@@ -24,6 +24,7 @@ public class UpdateOkCommand implements Command {
 			bvo.setContent(mr.getParameter("content"));
 			
 			String old_f_name = mr.getParameter("old_f_name");
+			String cPage = mr.getParameter("cPage");
 			
 			// 첨부파일이 없으면 이전 파일로 대체하자!
 			if(mr.getFile("f_name") == null) {
@@ -33,7 +34,7 @@ public class UpdateOkCommand implements Command {
 			}
 			int result = DAO.getUpdate(bvo);
 			// 성공하든 실패하든 onelist로 보내자!
-			return "MyController?cmd=onelist&b_idx="+bvo.getB_idx();
+			return "MyController?cmd=onelist&b_idx="+bvo.getB_idx()+"&cPage="+cPage;
 			
 		} catch (Exception e) {
 

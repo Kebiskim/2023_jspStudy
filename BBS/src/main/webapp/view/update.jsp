@@ -58,7 +58,7 @@
 		}
 	}
 	function list_go(f){
-		f.action="/MyController?cmd=list";
+		f.action="/MyController?cmd=list&cPage=${cPage}";
 		f.submit();
 	}
 </script>
@@ -66,6 +66,7 @@
 <body>
 	<div id="bbs">
 	<!-- multipart로 바뀌면 hidden 안된다!! -->
+	<!-- multipart라서, 리퀘스트 get paramter 안 먹힘!! 위에 값을 줘야 함 function 부분에 -->
 	<form method="post" encType="multipart/form-data">
 		<table summary="게시판 수정">
 			<caption>게시판 수정</caption>
@@ -107,6 +108,7 @@
 					<td colspan="2">
 						<!-- hidden 사용 가능한지 체크해보는 것 -->
 						<input type="hidden" name="b_idx" value="${bvo.b_idx}">
+						<input type="hidden" name="cPage" value="${cPage}">
 						<input type="button" value="수정" onclick="update_ok(this.form)"/>
 						<input type="reset" value="다시"/>
 						<input type="button" value="목록" onclick="list_go(this.form)"/>

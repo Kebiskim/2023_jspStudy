@@ -132,7 +132,9 @@
 				<tr>
 					<td colspan="2">
 						<input type="hidden" value="${bvo.b_idx}" name="b_idx">
+						<input type="hidden" value="${cPage}" name="cPage">
 						<input type="button" value="수정" onclick="update_go(this.form)"/>
+						<!-- 확인 -->
 						<input type="reset" value="삭제"  onclick="delete_go(this.form)"/>
 						<input type="button" value="목록" onclick="list_go(this.form)"/>
 					</td>
@@ -142,7 +144,7 @@
 	</form>
 	</div>
 	
-	<%-- 댓글 처리 --%>
+	<%-- 댓글 입력 --%>
 	<div style="padding:50px; width: 580px; margin: auto;">
 		<form method="post">
 			<fieldset>
@@ -152,6 +154,7 @@
 				</p>
 				<input type="button" value="댓글저장" onclick="comment_go(this.form)">
 				<input type="hidden" name="b_idx" value="${bvo.b_idx}">
+				<input type="hidden" name="cPage" value="${cPage}">
 			</fieldset>
 		</form>
 	</div>

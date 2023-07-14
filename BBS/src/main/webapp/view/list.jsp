@@ -105,12 +105,13 @@ table tfoot ol.paging li a:hover {
 					<c:otherwise>
 						<c:forEach var="k" items="${list}" varStatus="vs">
 							<tr>
-								<td>${vs.count}</td>
+								<%-- <td>${vs.count}</td> --%>
 								<!-- vs.subject 라서 오류? k.subject로 바꿔줘야 함!!! -->
 								<!-- onelist 뒤에 & 가 아니라 ?가 들어가있음..? -->
 								<!-- 메시지 Cannot invoke "com.ict.model.Command.exec(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)" because "comm" is null
 								 -->
-								<td><a href="/MyController?cmd=onelist&b_idx=${k.b_idx}">${k.subject}</a></td>
+								<td>${paging.totalRecord - ((paging.nowPage - 1)*paging.numPerPage+vs.index)}</td>
+								<td><a href="/MyController?cmd=onelist&b_idx=${k.b_idx}&cPage=${paging.nowPage}">${k.subject}</a></td>
 <%-- 								<td>${vs.subject}</td> --%>
 								<td>${k.writer}</td>
 								<td>${k.write_date.substring(0,10)}</td>
@@ -127,10 +128,42 @@ table tfoot ol.paging li a:hover {
 					<td colspan="4">
 						<ol class="paging">
 						<!-- 이전 -->
-						    
+						    <c:choose>
+						    	<%-- 시작블록과 pagePerBlock을 비교해서
+						    		 시작블록이 작으면 이전으로 가 비활성화 된다. 
+						    	 --%>
+						    	<c:when test="${paging.beginBlock <= paging.pagePerBlock}">
+						    		<li class="disable">이전으로</li>
+					    		</c:when>
+						    	<c:otherwise>
+						    		<li><a href="/MyController?cmd=list&cPage=${paging.beginBlock-paging.pagePerBlock}">이전으로</a></li>
+						    	</c:otherwise>
+						    </c:choose>
 						    <!-- 블록안에 들어간 페이지번호들 -->
+						    <c:forEach begin="${paging.beginBlock}" end="${paging.endBlock}" step="1" var="k">
+						    	<%-- 현재 페이지와 현재 페이지가 아닌 것으로 나누자. (현재페이지는 링크 안 걸 것이기 때문) --%>
+						    	<c:choose>
+						    		<c:when test="${k == paging.nowPage}">
+						    			<li class="now">${k}</li>
+						    		</c:when>
+						    		<c:otherwise>
+						    			<li><a href="/MyController?cmd=list&cPage=${k}">${k}</a></li>
+						    		</c:otherwise>
+						    	</c:choose>
+						    </c:forEach>
 							
-							<!-- 다음 -->
+						<!-- 다음 -->
+						    <c:choose>
+						    	<%-- 시작블록과 pagePerBlock을 비교해서
+						    		 시작블록이 작으면 이전으로 가 비활성화 된다. 
+						    	 --%>
+						    	<c:when test="${paging.endBlock >= paging.totalPage}">
+						    		<li class="disable">다음으로</li>
+					    		</c:when>
+						    	<c:otherwise>
+						    		<li><a href="/MyController?cmd=list&cPage=${paging.beginBlock+paging.pagePerBlock}">다음으로</a></li>
+						    	</c:otherwise>
+						    </c:choose>
 							
 						</ol>
 					</td>
