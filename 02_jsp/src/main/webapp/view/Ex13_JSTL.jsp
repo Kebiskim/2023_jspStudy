@@ -124,10 +124,11 @@
 	   		<hr>
 	   </c:forEach>
 	   
-	   <h2>0-10까지 짝수만 출력</h2>
-	   <c:forEach begin="0" end="20" step="2" var="k" varStatus="vs">
-	   		${k} &nbsp;&nbsp;&nbsp; ${vs.index} &nbsp;&nbsp;&nbsp;
-	   		<hr>
+<!-- 	   <h2>0-10까지 짝수만 출력</h2> -->
+	   <c:forEach begin="1" end="20" step="2" var="k" varStatus="vs">
+	   		${k} &nbsp;&nbsp;&nbsp; 
+<%-- 	   		${vs.index} &nbsp;&nbsp;&nbsp; --%>
+	   		<!-- <hr> -->
 	   </c:forEach>
 	   
 	   <h2>0-10까지 짝수만 출력</h2>
@@ -141,10 +142,10 @@
 	   <!-- comma가 들어가면 자동으로 배열이 됨 (아래처럼) -->
 	   <c:set var="arr_1" value="홍길동, 장길산, 임꺽정, 일지매"/>
 	   <c:forEach var="k" items="${arr_1}">
-	   		<h3>${k}님</h3>
+${k}
 	   </c:forEach>
-	   ${arr_1}
-	   <hr>
+ 	   ${arr_1}
+	   <hr> 
 	   
 	   <%-- 
 			반복해서 나누기   

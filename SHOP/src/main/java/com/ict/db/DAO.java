@@ -73,4 +73,31 @@ public class DAO {
 		List<CartVO> cartlist = getSession().selectList("shop.cartAllList", m_id);
 		return cartlist;
 	}
-}
+	
+	// 카트 업데이트
+	public static int getCartCountUpdate(CartVO cvo) {
+		int result = getSession().update("shop.cartCountUpdate", cvo);
+		ss.commit();
+		return result;
+	}
+	
+	// 카트 Delete
+	public static int getCartDel(String idx) {
+		int result = getSession().delete("shop.cartDel", idx);
+		ss.commit();
+		return result;
+	}
+	
+	// 회원가입
+	public static int InsertMemberInfo(MemberVO mvo) {
+		int result = getSession().insert("shop.insMemInfo", mvo);
+		ss.commit();
+		return result;
+	}
+	
+	// 상품 추가
+	public static int getProductInsert(ShopVO vo) {
+		int result = getSession().insert("shop.productInsert", vo);
+		ss.commit();
+		return result;
+	}}

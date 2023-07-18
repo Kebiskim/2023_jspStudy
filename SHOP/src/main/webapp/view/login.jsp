@@ -23,6 +23,15 @@
 		f.action="/MyController?cmd=loginok";
 		f.submit();
 	}
+	
+	// 일반 함수는 호출되었을 때, 호출한 대상에 바인딩된다.
+
+	//아래 코드를 통해 this 가 각각 어디를 바라보고 있는지 알 수 있다.
+
+	// 앞에 f. 를 붙여서 호출하면 this 가 func() 함수를 가리키고 있다.
+
+	// 하지만 다른 변수에 할당한 다음에 아무것도 붙이지 않고 호출하면 this 는 전역객체를 참조한다. (브라우저에서는 window)
+	
 	function join_go(f) {
 		f.action="/MyController?cmd=join";
 		f.submit();

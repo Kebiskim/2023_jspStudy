@@ -26,4 +26,20 @@
 	<select id="cartAllList" parameterType="String" resultType="com.ict.db.CartVO">
 		select * from cart where m_id = #{m_id}
 	</select>
+	<!-- resultType은 int라서 안 써도 됨! -->
+	<update id="cartCountUpdate" parameterType="com.ict.db.CartVO">
+		update cart set p_su = #{p_su} where m_id = #{m_id} and p_num = #{p_num}
+	</update>
+	<delete id="cartDel" parameterType="String">
+		delete from cart where idx = #{idx}
+	</delete>
+	<insert id="insMemInfo" parameterType="com.ict.db.MemberVO">
+		insert into member01 values(#{idx}, #{m_id}, #{m_pw}, #{m_name}, #{m_age}, null, #{m_addr}, null)
+	</insert>
+	<insert id="productInsert" parameterType="com.ict.db.ShopVO">
+		insert into shop_t()
+		values(shop_seq.nextVal, #{category}, #{p_num}, #{p_name}, #{p_company}, #{p_price}, #{p_saleprice}, 
+		#{p_image_s}, #{p_image_l}, #{p_content}, sysdate)
+	</insert>
 </mapper>
+

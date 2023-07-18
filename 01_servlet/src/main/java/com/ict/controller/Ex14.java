@@ -34,6 +34,7 @@ public class Ex14 extends HttpServlet {
 		// 자바에서 일처리한 내용은 request.setAttribute()에 저장한다!!
 		// html에서는 그 내용을 가지고 사용할 수 있음!! (단, request.getAttribute가 JSP로 만들어져야만 가져다 쓸 수 있다!!★)
 		
+		request.setAttri
 		
 		// 일처리를 구별하기 위해서 cmd 파라미터를 먼저 받자!
 		String cmd = request.getParameter("cmd");
