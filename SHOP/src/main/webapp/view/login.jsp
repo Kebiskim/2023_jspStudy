@@ -31,12 +31,13 @@
 </head>
 <body>
 <jsp:include page="top.jsp" />
-	<div>
+	<div id="mydiv">
 		<form method="post">
 			<table>
 				<thead>
 					<th colspan="2"><h2>Login</h2></th>
 				</thead>
+				<tbody>
 					<tr>
 						<th>아이디</th>
 						<td><input type="text" name="m_id"></td>
@@ -45,8 +46,9 @@
 						<th>패스워드</th>
 						<td><input type="password" name="m_pw"></td>
 					</tr>
+				</tbody>
 				<tfoot>
-					<tr>
+					<tr style="text-align: center;">
 						<td colspan="2">
 							<input type="button" value="로그인" onclick="login_go(this.form)">
 							<input type="button" value="회원가입" onclick="join_go(this.form)">

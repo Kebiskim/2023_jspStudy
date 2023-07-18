@@ -15,6 +15,7 @@ public class ShowCartCommand implements Command {
 		// 로그인 성공 시에 저장한 정보 (세션에 있음)
 		MemberVO mvo = (MemberVO) request.getSession().getAttribute("m_vo");
 		String m_id = mvo.getM_id();
+		
 		// 해당 id의 전체 카트 정보 가져오기
 		List<CartVO> cartlist = DAO.getAllCartList(m_id);
 		request.setAttribute("cartlist", cartlist);

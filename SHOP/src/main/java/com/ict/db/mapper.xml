@@ -10,7 +10,7 @@
 	<select id="list" parameterType="String" resultType="com.ict.db.ShopVO">
 		select * from shop_t where category = #{category}
 	</select>
-	<select id="onelist" parameterType="String" resultType="com.ict.db.ShopVO">
+	<select id="oneList" parameterType="String" resultType="com.ict.db.ShopVO">
 		select * from shop_t where idx = #{idx}
 	</select>
 	<select id="cartList" parameterType="Map" resultType="com.ict.db.CartVO">

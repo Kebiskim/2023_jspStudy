@@ -50,7 +50,7 @@ public class DAO {
 		Map<String, String> map = new HashMap<>();
 		map.put("m_id", m_id);
 		map.put("p_num", p_num);
-		CartVO cvo = getSession().selectOne("shop.cartlist", map);
+		CartVO cvo = getSession().selectOne("shop.cartList", map);
 		return cvo;
 	}
 	

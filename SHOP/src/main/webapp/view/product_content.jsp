@@ -23,7 +23,7 @@ table, th, td {
 <script type="text/javascript">
 	// 장바구니 담기
 	// JS에서도 EL 사용 가능
-	function add_cart(f){
+	function add_cart(){
 		if(${login == 'ok'}){
 			location.href = "/MyController?cmd=addcart&idx=${vo.idx}";
 		}else{
@@ -32,7 +32,7 @@ table, th, td {
 		}
 	}
 	// 장바구니 보기
-	function show_cart(f){
+	function show_cart(){
 		if(${login == 'ok'}){
 			location.href = "/MyController?cmd=showcart";
 		}else{
@@ -45,9 +45,13 @@ table, th, td {
 <body>
 	<jsp:include page="top.jsp"/>
 	<table>
-		<tr bgcolor="#dedede">
+		<tr>
+			<td width="40%">제품 Category</td>
+			<td width="60%">${vo.category}</td>
+		</tr>
+		<tr>
 			<td width="40%">제품번호</td>
-			<td width="60%">${vo.p_num}</td>
+			<td width="60%">${vo.p_num}</td>			
 		</tr>
 		<tr>
 			<td width="40%">제품이름</td>

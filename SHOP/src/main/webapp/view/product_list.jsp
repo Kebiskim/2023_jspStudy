@@ -10,7 +10,7 @@
 <style type="text/css">
 table {
 	margin: 50px auto;
-	width: 800;
+	width: 800px;
 	border-collapse: collapse;
 	font-size: 12pt;
 	border-color: navy;
