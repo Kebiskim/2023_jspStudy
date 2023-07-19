@@ -58,7 +58,7 @@ public class MyController extends HttpServlet {
 		}
 		String path = comm.exec(request, response);
 		// path가 null인 오류 발생
-		System.out.println("컨트롤러 path는" + path);
+		System.out.println("컨트롤러 path는 : " + path);
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 }

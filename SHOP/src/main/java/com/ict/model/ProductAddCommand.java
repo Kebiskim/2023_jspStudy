@@ -42,6 +42,7 @@ public class ProductAddCommand implements Command {
 		} catch (Exception e) {
 			
 		}
+		// 여기가 null 이라서 null 반환?
 		return null;
 	}
 }
