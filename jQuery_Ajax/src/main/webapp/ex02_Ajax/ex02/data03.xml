@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	xml : 확장 마크업 언어
+		  사용자가 태그를 만들어서 사용
+		  DTD라는 xml 문서의 구조 및 해당 문서에서 사용할 수 있는 
+		  적법한 요소 및 속성을 정의한 것
+		  ** xml은 루트 태그가 하나이다.
+-->
+<products>
+	<product name="제네시스" count="5">현대 자동차</product>
+	<product name="카렌스" count="1">기아 자동차</product>
+	<product name="카니발" count="6">기아 자동차</product>
+	<product name="카스타" count="7">기아 자동차</product>
+	<product name="캐스퍼" count="4">현대 자동차</product>
+</products>
