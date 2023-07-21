@@ -5,6 +5,8 @@ D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3586381531
 \SHOP\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2235177293.index
 \01_servlet\src\main\java
+D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2650450551.index
+\jQuery_Ajax\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\320308618.index
 \jQuery_Ajax\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3985661688.index
@@ -17,6 +19,10 @@ D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3377912784
 \BBS\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1268843247.index
 \02_jsp\src\main\java
+D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3942488801.index
+\jQuery_Ajax\src\main\java
+D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1567230.index
+\jQuery_Ajax\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1070882551.index
 \02_jsp\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1017524857.index

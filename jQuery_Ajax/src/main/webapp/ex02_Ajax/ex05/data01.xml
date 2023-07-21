@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	xml : 확장 마크업 언어
+		  사용자가 태그를 만들어서 사용
+		  DTD라는 xml 문서의 구조 및 해당 문서에서 사용할 수 있는 
+		  적법한 요소 및 속성을 정의한 것
+		  ** xml은 루트 태그가 하나이다.
+		  첫줄에 ? ? 부분이 꼭 들어가야 xml 파일임!!
+-->
+<products>
+	<product>
+		<name>흰 우유</name>
+		<price>1100</price>
+	</product>
+	<product>
+		<name>탄산음료</name>
+		<price>1600</price>
+	</product>
+	<product>
+		<name>이온음료</name>
+		<price>1400</price>
+	</product>
+	<product>
+		<name>음료수</name>
+		<price>900</price>
+	</product>
+</products>

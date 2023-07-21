@@ -1,0 +1,8 @@
+jQuery.ajax(url, method, data, datatype, success, error)
+  
+- url    : 읽어들일 서버 페이지의 위치
+- method : get, post 방식
+- data   : 요청할때 (서버 페이지에 갈때)에 전달 되는 파라미터
+- dataType :응답결과의 데이터형태(xml, html, json,text)
+- success : 성공 했을 때
+- error : 실패 했을 때
