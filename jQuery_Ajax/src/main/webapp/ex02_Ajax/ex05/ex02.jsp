@@ -29,6 +29,7 @@
 					table += "<tbody>";
 					// 원하는 태그 검색
 					$(data).find("product").each(function() {
+						// product 태그 안의 name 속성에 접근, count 속성에 접근
 						var name = $(this).attr("name");
 						var count = $(this).attr("count");
 						table += "<tr>";

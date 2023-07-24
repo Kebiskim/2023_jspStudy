@@ -27,7 +27,7 @@
 					// console.log(data);
 					var tbody="";
 					$(data).find("member").each(function() {
-						// db가 아니라, mycontroller 보고 해야 함!!
+						// db가 아니라, mymodel 보고 해야 함!!
 						tbody += "<tr>";
 						tbody += "<td>" + $(this).find("idx").text() + "</td>";
 						tbody += "<td>" + $(this).find("m_id").text() + "</td>";
@@ -87,7 +87,7 @@
 				dataType:"xml",
 				method:"get",
 				success: function(data) {
-					console.log(data);
+					// console.log(data);
 					$("#tb").css("background", "pink");
 					var tbody="";					
 					$(data).find("member").each(function() {
@@ -145,11 +145,13 @@
 			$.ajax({
 				// 컨트롤러 통해서 받아오기
 				url:"/MyController5",
-				dataType:"plain",
+				// ★ dataType : plain 아니다!!!
+				dataType:"text",
 				method:"get",
 				success: function(data) {
 					console.log(data);
-					$("#tb").css("background", "LightCoral");
+					$("#tb").css("background", "blue");
+					$("#tb").css("color", "white");
 					var tbody="";
 					var rows = data.split("/");
 					for ( var k in rows) {

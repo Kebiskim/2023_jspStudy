@@ -41,7 +41,7 @@
               console.log("쿠키 있음");
           }
           
-		$("#close").on("click", function() {
+		$("#close").on("click", function() {	
 			$("#movie").css("display", "none");
 		});
 		$("#close2").on("click", function() {

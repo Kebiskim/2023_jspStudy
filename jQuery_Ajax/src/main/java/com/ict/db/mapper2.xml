@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
+<mapper namespace="members">
+	<select id="list" resultType="com.ict.db.MVO">
+		<!-- spring에서는 config.xml의 mapper.xml 자리에 *.xml 로 표현하기도 함 => jsp에서는 안 먹는듯! -->
+		select * from members order by m_idx asc
+	</select>
+	<select id="delete" parameterType="String">
+		delete from members where m_idx = #{m_idx}
+	</select>
+	<!-- 집합함수(count, max, min, avg, sum) 쓰면 숫자로 하나만 나옴 -->
+	<!-- select 쓸때는 resultType int로 선언해줘야 함!! -->
+	<select id="idchk" parameterType="String" resultType="int">
+		select count(*) from members where m_id = #{m_id}
+	</select>
+	<insert id="insert" parameterType="com.ict.db.MVO">
+		insert into members 
+		values(MEMBERS_SEQ.NEXTVAL, #{m_id}, #{m_pw}, #{m_name}, #{m_age}, sysdate)
+	</insert>
+</mapper>

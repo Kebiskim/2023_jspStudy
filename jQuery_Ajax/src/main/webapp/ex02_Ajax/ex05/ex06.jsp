@@ -18,7 +18,6 @@
 	$(document).ready(function(){
 		$("#btn").on("click", function() {
 			$("#out").empty();
-			// 비동기 통신
 			// ajax 는 비동기형 통신방법
 			// 실시간으로 바뀌는 옛날의 네이버 실시간 검색순위같은 것을 반영해주는 거임
 			$.ajax({

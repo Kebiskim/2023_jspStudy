@@ -29,5 +29,7 @@ D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1017524857
 \02_jsp\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1956187970.index
 \jQuery_Ajax\src\main\java
+D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\457852463.index
+\jQuery_Ajax\src\main\java
 D:\KSW\jspStudy\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3555846453.index
 \02_jsp\src\main\java

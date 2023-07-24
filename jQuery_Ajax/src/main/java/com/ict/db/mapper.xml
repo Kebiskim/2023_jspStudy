@@ -5,6 +5,7 @@
 <!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
 <mapper namespace="member">
 	<select id="list" resultType="com.ict.db.VO">
+		<!-- spring에서는 config.xml의 mapper.xml 자리에 *.xml 로 표현하기도 함 -->
 		select * from member01
 	</select>
 </mapper>
